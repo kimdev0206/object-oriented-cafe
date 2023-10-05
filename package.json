@@ -1,0 +1,18 @@
+{
+  "name": "object-oriented-cafe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon --exec \"ts-node\" index.ts"
+  },
+  "author": "Yongki Kim",
+  "license": "ISC",
+  "dependencies": {
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
