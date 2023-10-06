@@ -8,15 +8,11 @@ export default class Barista {
     this._amount = amount;
   }
 
-  get amount(): number {
-    return this._amount;
-  }
-
-  set amount(value: number) {
-    this._amount = value;
-  }
-
   makeCoffee(menuItem: MenuItem) {
     return new Coffee(menuItem.name, menuItem.price);
+  }
+
+  receive(money: number): void {
+    this._amount += money;
   }
 }

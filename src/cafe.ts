@@ -19,7 +19,7 @@ export default class Cafe {
     );
 
     customer.pay(selectedMenuItem.price);
-    this._barista.amount = this._barista.amount + selectedMenuItem.price;
+    this._barista.receive(selectedMenuItem.price);
 
     const coffee: Coffee = this._barista.makeCoffee(selectedMenuItem);
 
