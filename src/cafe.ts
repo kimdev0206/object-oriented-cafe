@@ -14,9 +14,7 @@ export default class Cafe {
   }
 
   enter(customer: Customer): void {
-    const selectedMenuItem: MenuItem = customer.selectRandomMenuItem(
-      this._menu
-    );
+    const selectedMenuItem: MenuItem = this._menu.recommend();
 
     customer.pay(selectedMenuItem.price);
     this._barista.receive(selectedMenuItem.price);

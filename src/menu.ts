@@ -7,11 +7,11 @@ export default class Menu {
     this._items = items;
   }
 
-  get items(): MenuItem[] {
-    return this._items;
-  }
+  recommend(): MenuItem {
+    const selectRandomIndex = (max: number = this._items.length) => {
+      return Math.floor(Math.random() * max);
+    };
 
-  getItem(index: number): MenuItem {
-    return this._items[index];
+    return this._items[selectRandomIndex()];
   }
 }

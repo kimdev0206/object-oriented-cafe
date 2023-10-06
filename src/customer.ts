@@ -1,6 +1,4 @@
 import Coffee from "./coffee";
-import Menu from "./menu";
-import MenuItem from "./menu-item";
 
 export default class Customer {
   private _money: number;
@@ -20,16 +18,6 @@ export default class Customer {
 
   set coffee(value: Coffee) {
     this._coffee = value;
-  }
-
-  selectRandomMenuItem(menu: Menu): MenuItem {
-    const menuItems: MenuItem[] = menu.items;
-
-    const selectRandomIndex = (max: number = menuItems.length) => {
-      return Math.floor(Math.random() * max);
-    };
-
-    return menu.getItem(selectRandomIndex());
   }
 
   pay(cost: number): void {
