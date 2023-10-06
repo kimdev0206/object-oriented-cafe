@@ -1,5 +1,6 @@
 import Barista from "./barista";
 import Coffee from "./coffee";
+import Menu from "./menu";
 import MenuItem from "./menu-item";
 
 export default class Customer {
@@ -24,6 +25,10 @@ export default class Customer {
     } else {
       throw new Error("잔액이 부족합니다.");
     }
+  }
+
+  selectRandomMenuItem(menu: Menu): MenuItem {
+    return menu.recommend();
   }
 
   orderCoffee(barista: Barista, menuItem: MenuItem): void {
