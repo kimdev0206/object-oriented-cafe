@@ -27,11 +27,9 @@ export default class Customer {
     }
   }
 
-  selectRandomMenuItem(menu: Menu): MenuItem {
-    return menu.recommend();
-  }
+  orderCoffee(barista: Barista, menu: Menu): void {
+    const menuItem: MenuItem = menu.recommend();
 
-  orderCoffee(barista: Barista, menuItem: MenuItem): void {
     this.pay(menuItem.price);
     barista.receive(menuItem.price);
 

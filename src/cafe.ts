@@ -1,7 +1,6 @@
 import Barista from "./barista";
 import Customer from "./customer";
 import Menu from "./menu";
-import MenuItem from "./menu-item";
 
 export default class Cafe {
   private _barista: Barista;
@@ -13,10 +12,6 @@ export default class Cafe {
   }
 
   enter(customer: Customer): void {
-    const selectedMenuItem: MenuItem = customer.selectRandomMenuItem(
-      this._menu
-    );
-
-    customer.orderCoffee(this._barista, selectedMenuItem);
+    customer.orderCoffee(this._barista, this._menu);
   }
 }
