@@ -14,10 +14,6 @@ export default class Customer {
     return this._money;
   }
 
-  set money(value: number) {
-    this._money = value;
-  }
-
   get coffee(): Coffee {
     return this._coffee;
   }
@@ -34,5 +30,13 @@ export default class Customer {
     };
 
     return menu.getItem(selectRandomIndex());
+  }
+
+  pay(cost: number): void {
+    if (this._money >= cost) {
+      this._money -= cost;
+    } else {
+      throw new Error("잔액이 부족합니다.");
+    }
   }
 }
