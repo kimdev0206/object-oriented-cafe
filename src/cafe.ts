@@ -1,5 +1,4 @@
 import Barista from "./barista";
-import Coffee from "./coffee";
 import Customer from "./customer";
 import Menu from "./menu";
 import MenuItem from "./menu-item";
@@ -19,8 +18,6 @@ export default class Cafe {
     customer.pay(selectedMenuItem.price);
     this._barista.receive(selectedMenuItem.price);
 
-    const coffee: Coffee = this._barista.makeCoffee(selectedMenuItem);
-
-    customer.coffee = coffee;
+    customer.orderCoffee(this._barista, selectedMenuItem);
   }
 }
