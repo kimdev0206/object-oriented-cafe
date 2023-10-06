@@ -45,3 +45,35 @@ export default class Cafe {
   }
 }
 ```
+
+### 2단계: 객체간 명확한 행동
+
+- Customer는 결제를 합니다.
+- Barista는 돈 받기를 합니다.
+- Menu는 MenuItem을 랜덤 선택 합니다.
+- Customer는 커피를 요청 합니다.
+
+> **WARNING: 직관에 어긋납니다.**
+>
+> - Cafe가 Menu를 랜덤 선택 합니다.
+
+> **WARNING: 맥락이 부자연스럽습니다.**
+>
+> - Customer의 결제 행동과 Barista의 돈 받기 행동은 상호작용이 있지만, 서로 독립적입니다.
+
+```ts
+export default class Cafe {
+  private _barista: Barista;
+  private _menu: Menu;
+  ...
+
+  enter(customer: Customer): void {
+    const selectedMenuItem: MenuItem = this._menu.recommend();
+
+    customer.pay(selectedMenuItem.price);
+    this._barista.receive(selectedMenuItem.price);
+
+    customer.orderCoffee(this._barista, selectedMenuItem);
+  }
+}
+```
