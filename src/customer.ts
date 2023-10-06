@@ -19,7 +19,7 @@ export default class Customer {
     return this._coffee;
   }
 
-  private pay(cost: number): void {
+  pay(cost: number): void {
     if (this._money >= cost) {
       this._money -= cost;
     } else {
@@ -30,10 +30,7 @@ export default class Customer {
   orderCoffee(barista: Barista, menu: Menu): void {
     const menuItem: MenuItem = menu.recommend();
 
-    this.pay(menuItem.price);
-    barista.receive(menuItem.price);
-
-    const coffee: Coffee = barista.makeCoffee(menuItem);
+    const coffee: Coffee = barista.takeOrder(menuItem, this);
     this._coffee = coffee;
   }
 }
