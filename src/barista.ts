@@ -1,5 +1,5 @@
 import Coffee from "./coffee";
-import Customer from "./customer";
+import Payable from "./customer/payable";
 import MenuItem from "./menu-item";
 
 export default class Barista {
@@ -17,8 +17,8 @@ export default class Barista {
     this._amount += money;
   }
 
-  takeOrder(menuItem: MenuItem, customer: Customer): Coffee {
-    customer.pay(menuItem.price);
+  takeOrder(menuItem: MenuItem, payable: Payable): Coffee {
+    payable.pay(menuItem.price);
     this.receive(menuItem.price);
 
     return this.makeCoffee(menuItem);
