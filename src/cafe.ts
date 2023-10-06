@@ -17,9 +17,6 @@ export default class Cafe {
       this._menu
     );
 
-    customer.pay(selectedMenuItem.price);
-    this._barista.receive(selectedMenuItem.price);
-
     customer.orderCoffee(this._barista, selectedMenuItem);
   }
 }
