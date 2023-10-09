@@ -21,7 +21,7 @@ export default class Customer {
   }
 
   orderCoffee(barista: Barista, menu: Menu): void {
-    const menuItem: MenuItem = menu.recommend();
+    const menuItem: MenuItem = menu.item;
 
     const coffee: Coffee = barista.takeOrder(menuItem, this._payable);
     this._coffee = coffee;
