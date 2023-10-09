@@ -16,11 +16,24 @@ import Menu from "./src/menu";
   const payable: Payable = PayableFactory.with(payWay, 100_000);
   const cathy: Customer = new Customer(payable);
 
+  const moneyFormatter = new Intl.NumberFormat("ko-KR", {
+    style: "currency",
+    currency: "KRW",
+  });
+
   // run
-  console.log(cathy.money);
+  console.log("주문 전 금액".padStart(20, "#").padEnd(30, "#"));
+  console.log(`Customer 금액: ${moneyFormatter.format(cathy.money)}`);
+  console.log(`Barista  금액: ${moneyFormatter.format(bob.amount)}`);
 
   cafe.enter(cathy);
 
-  console.log(cathy.coffee.name);
-  console.log(cathy.money);
+  console.log("주문 후 금액".padStart(20, "#").padEnd(30, "#"));
+  console.log(
+    `주문메뉴     : ${cathy.coffee.name} (${moneyFormatter.format(
+      cathy.coffee.price
+    )})`
+  );
+  console.log(`Customer 금액: ${moneyFormatter.format(cathy.money)}`);
+  console.log(`Barista  금액: ${moneyFormatter.format(bob.amount)}`);
 })();

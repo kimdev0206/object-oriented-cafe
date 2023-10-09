@@ -9,6 +9,10 @@ export default class Barista {
     this._amount = amount;
   }
 
+  get amount(): number {
+    return this._amount;
+  }
+
   private makeCoffee(menuItem: MenuItem): Coffee {
     return new Coffee(menuItem.name, menuItem.price);
   }

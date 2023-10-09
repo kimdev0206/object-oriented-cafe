@@ -10,4 +10,8 @@ export default class Coffee {
   get name(): string {
     return this._name;
   }
+
+  get price(): number {
+    return this._price;
+  }
 }
