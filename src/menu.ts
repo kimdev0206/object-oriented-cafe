@@ -1,26 +1,24 @@
 import moment, { Moment } from "moment";
 import MenuItem from "./menu-item";
+import discountAtHour from "./discount-at-hour";
+import discountWithDate from "./discount-at-date";
 
 export default class Menu {
-  private static _discountDate = 20;
-  private static _discountHourStart = 8;
-  private static _discountHourEnd = 10;
-
   private _items: MenuItem[];
   private _datetime: Moment;
 
   constructor() {
-    this._items = [];
-    this._items.push(new MenuItem("Americano"));
-    this._items.push(new MenuItem("Cappuccino"));
-    this._items.push(new MenuItem("CaramelMacchiato"));
-    this._items.push(new MenuItem("Espresso"));
-
     this._datetime = moment("2023-10-20 08:30");
-  }
 
-  get datetime(): string {
-    return this._datetime.format("YYYY-MM-DD HH:mm");
+    this._items = [];
+    this._items.push(
+      new MenuItem("Americano", this.datetime, discountWithDate, discountAtHour)
+    );
+    this._items.push(new MenuItem("Cappuccino", this.datetime, discountAtHour));
+    this._items.push(
+      new MenuItem("CaramelMacchiato", this.datetime, discountAtHour)
+    );
+    this._items.push(new MenuItem("Espresso", this.datetime, discountAtHour));
   }
 
   get item(): MenuItem {
@@ -28,26 +26,14 @@ export default class Menu {
       return Math.floor(Math.random() * max);
     };
 
-    const item = this._items[selectRandomIndex()];
-    item.price = this.discount(item);
-
-    return item;
+    return this._items[selectRandomIndex()];
   }
 
-  private discount(menuItem: MenuItem): number {
-    let { price } = menuItem;
+  get datetime(): Moment {
+    return this._datetime;
+  }
 
-    if (this._datetime.get("date") === Menu._discountDate) {
-      price *= 0.8;
-    }
-
-    if (
-      this._datetime.get("hour") >= Menu._discountHourStart &&
-      this._datetime.get("hour") <= Menu._discountHourEnd
-    ) {
-      price -= 500;
-    }
-
-    return price;
+  datetimeFormat(): string {
+    return this._datetime.format("YYYY-MM-DD HH:mm");
   }
 }
