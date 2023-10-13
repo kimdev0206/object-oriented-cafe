@@ -58,4 +58,11 @@
 
 **결제 방법 변경**
 
-![](assets/step3.drawio.png)
+![](assets/step3-1.drawio.png)
+
+**할인 방법 추가**
+
+- 출근 시간대 (8-10시)에 전 메뉴를 500원 할인합니다.
+- 매달 20일에 아메리카노 메뉴를 20% 할인합니다.
+
+![](assets/step3-2.drawio.png)
